@@ -1,8 +1,14 @@
+import { Fragment } from 'react';
+
+import Header from './components/Layout/Header';
+import Books from './components/Books/Books';
+
 function App() {
     return (
-        <div>
-            <h2>It's working!</h2>
-        </div>
+        <Fragment>
+            <Header />
+            <Books />
+        </Fragment>
     );
 }
 
