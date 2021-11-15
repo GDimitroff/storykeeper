@@ -12,7 +12,7 @@ const Header = (props) => {
                 <div className={styles.logo}>
                     <FontAwesomeIcon
                         icon={faBookOpen}
-                        size="2x"
+                        size="3x"
                         color="#3b2f17"
                     />
                     <h1 className={styles.heading}>

@@ -7,13 +7,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 15%;
+    padding: 0 10%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 10;
 }
 
 .logo {
-    margin: 15px 0;
+    margin: 1.5rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,8 +22,9 @@
 
 .heading {
     color: #3b2f17;
+    font-size: 3.2rem;
     font-weight: 300;
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 .bold {
@@ -44,6 +45,7 @@
 }
 
 .nav-list-item a {
+    font-size: 1.6rem;
     padding: 7px 14px;
     text-decoration: none;
     border: 3px solid #3b2f17;
@@ -55,7 +57,7 @@
     color: #e2d4b7;
     background-color: #3b2f17;
 
-    transition: all 300ms;
+    transition: all 500ms;
 }
 
 .nav-list-item a:hover,
@@ -66,14 +68,14 @@
 
 .main-image {
     width: 100%;
-    height: 30rem;
+    height: 35rem;
     z-index: 0;
     overflow: hidden;
+    box-shadow: 0 3px 18px rgba(155, 117, 13, 0.25);
 }
 
 .main-image img {
     width: 110%;
     height: 100%;
     object-fit: cover;
-    transform: rotateZ(-3deg) translateY(-3rem) translateX(-2rem);
 }
