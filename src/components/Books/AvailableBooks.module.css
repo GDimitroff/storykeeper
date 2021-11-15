@@ -5,11 +5,15 @@
 }
 
 .books-loading {
+    font-size: 2.4rem;
+    margin-top: 10rem;
     text-align: center;
-    color: #fff;
+    color: #333;
 }
 
 .books-error {
+    font-size: 2.4rem;
+    margin-top: 10rem;
     text-align: center;
     color: red;
 }

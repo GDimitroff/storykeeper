@@ -20,8 +20,6 @@ const AvailableBooks = () => {
 
             const data = await response.json();
 
-            console.log(data);
-
             const loadedBooks = [];
             for (const key in data) {
                 loadedBooks.push({
@@ -32,8 +30,6 @@ const AvailableBooks = () => {
                     imageUrl: data[key].imageUrl,
                 });
             }
-
-            console.log(loadedBooks);
 
             setBooks(loadedBooks);
             setIsLoading(false);
