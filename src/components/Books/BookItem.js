@@ -17,7 +17,7 @@ const BookItem = (props) => {
     return (
         <Fragment>
             {detailsShown && (
-                <BookDetails onClose={hideDetailsHandler} book={props} />
+                <BookDetails onClose={hideDetailsHandler} id={props.id} />
             )}
             <article className={styles.book} onClick={showDetailsHandler}>
                 <div className={styles['book-image']}>

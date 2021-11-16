@@ -40,9 +40,34 @@
 
 .buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .buttons button:first-child {
     margin-right: 0.7rem;
+}
+
+.btn-close {
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    position: absolute;
+    color: #fff;
+    border: 3px solid #fff;
+    background-color: #555;
+    border-radius: 50%;
+    width: 4.8rem;
+    height: 4.8rem;
+    top: -22px;
+    right: -22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms;
+}
+
+.btn-close:hover {
+    color: #fff;
+    background-color: red;
 }

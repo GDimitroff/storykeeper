@@ -1,10 +1,21 @@
+import { useState, useEffect } from 'react';
+
 import Modal from '../UI/Modal';
 
+import * as bookService from '../../services/bookService';
 import styles from './BookDetails.module.css';
 
-const BookDetails = ({ onClose, book }) => {
+const BookDetails = (props) => {
+    const [book, setBook] = useState({});
+
+    useEffect(() => {
+        bookService.getBookById(props.id).then((book) => {
+            setBook(book);
+        });
+    });
+
     return (
-        <Modal onClose={onClose}>
+        <Modal onClose={props.onClose}>
             <article className={styles['book-details']}>
                 <div className={styles['book-image']}>
                     <img src={book.imageUrl} alt={book.title} />
@@ -20,12 +31,12 @@ const BookDetails = ({ onClose, book }) => {
                         </div>
                     </div>
                     <div className={styles.buttons}>
-                        <div className={styles['main-actions']}>
-                            <button className="btn btn-primary">Edit</button>
-                            <button className="btn btn-danger">Delete</button>
-                        </div>
-                        <button className="btn btn-primary" onClick={onClose}>
-                            Close
+                        <button className="btn btn-primary">Edit</button>
+                        <button className="btn btn-danger">Delete</button>
+                        <button
+                            className={styles['btn-close']}
+                            onClick={props.onClose}>
+                            X
                         </button>
                     </div>
                 </div>
