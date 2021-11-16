@@ -1,0 +1,11 @@
+.book-details {
+    display: flex;
+}
+
+.book-image {
+    flex-basis: 40%;
+}
+
+.book-image img {
+    width: 100%;
+}
