@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import styles from './BooksSummary.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const QUOTES = [
     '“Sometimes, you read a book and it fills you with this weird evangelical zeal, and you become convinced that the shattered world will never be put back together unless and until all living humans read the book.” - John Green, The Fault in Our Stars',
@@ -25,15 +27,18 @@ const BooksSummary = () => {
     const [quote, setQuote] = useState(QUOTES[0]);
 
     const randomQuoteHandler = () => {
-        const index = Math.floor(Math.random() * 15) + 1;
+        const index = Math.floor(Math.random() * QUOTES.length);
         setQuote(QUOTES[index]);
     };
 
     return (
         <section className={styles.summary}>
-            <p className={styles.heart} onClick={randomQuoteHandler}>
-                &#10084;
-            </p>
+            <FontAwesomeIcon
+                icon={faHeart}
+                size="5x"
+                className={styles.heart}
+                onClick={randomQuoteHandler}
+            />
             <h2>Meet your next favorite story.</h2>
             <p className={styles.quote}>{quote}</p>
         </section>

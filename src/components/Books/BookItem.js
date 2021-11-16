@@ -1,7 +1,6 @@
 import styles from './BookItem.module.css';
 
 const BookItem = (props) => {
-    console.log(props);
     return (
         <article className={styles.book}>
             <div className={styles['book-image']}>

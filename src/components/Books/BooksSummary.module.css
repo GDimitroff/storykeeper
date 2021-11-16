@@ -16,7 +16,7 @@
 
 .summary h2 {
     font-size: 5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .summary .quote {
@@ -30,11 +30,10 @@
 
 .summary .heart {
     color: #333;
-    font-size: 5rem;
     cursor: pointer;
     transition: all 300ms;
 }
 
 .summary .heart:hover {
-    color: red;
+    color: #9b2226;
 }
