@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import classes from './AvailableBooks.module.css';
+import * as bookService from '../../services/bookService';
 import BookItem from './BookItem';
+import classes from './AvailableBooks.module.css';
 
 const AvailableBooks = () => {
     const [books, setBooks] = useState([]);
@@ -9,36 +10,27 @@ const AvailableBooks = () => {
     const [httpError, setHttpError] = useState(null);
 
     useEffect(() => {
-        const fetchBooks = async () => {
-            const response = await fetch(
-                'https://story-keeper-3343a-default-rtdb.europe-west1.firebasedatabase.app/books.json'
-            );
+        bookService
+            .getAllBooks()
+            .then((data) => {
+                const loadedBooks = [];
+                for (const key in data) {
+                    loadedBooks.push({
+                        id: key,
+                        title: data[key].title,
+                        author: data[key].author,
+                        description: data[key].description,
+                        imageUrl: data[key].imageUrl,
+                    });
+                }
 
-            if (!response.ok) {
-                throw new Error('Something went wrong!');
-            }
-
-            const data = await response.json();
-
-            const loadedBooks = [];
-            for (const key in data) {
-                loadedBooks.push({
-                    id: key,
-                    title: data[key].title,
-                    author: data[key].author,
-                    description: data[key].description,
-                    imageUrl: data[key].imageUrl,
-                });
-            }
-
-            setBooks(loadedBooks);
-            setIsLoading(false);
-        };
-
-        fetchBooks().catch((error) => {
-            setIsLoading(false);
-            setHttpError(error.message);
-        });
+                setBooks(loadedBooks);
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                setIsLoading(false);
+                setHttpError(error.message);
+            });
     }, []);
 
     if (isLoading) {

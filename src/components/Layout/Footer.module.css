@@ -19,7 +19,7 @@
 
 .link:link,
 .link:visited {
-    color: #9b2226;
+    color: #555;
     font-weight: 500;
     transition: all 500ms;
 }

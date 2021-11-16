@@ -1,11 +1,13 @@
 .header {
+    position: fixed;
     width: 100%;
     background-color: #e2d4b7;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
+    padding: 0.4rem 10%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 10;
 }
 
 .logo {
@@ -42,7 +44,7 @@
 
 .nav-list-item a {
     font-size: 1.6rem;
-    padding: 7px 14px;
+    padding: 10px 24px;
     text-decoration: none;
     border: 3px solid #3b2f17;
     border-radius: 3px;

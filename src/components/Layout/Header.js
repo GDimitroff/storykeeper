@@ -22,7 +22,7 @@ const Header = (props) => {
                 <nav>
                     <ul className={styles['nav-list']}>
                         <li className={styles['nav-list-item']}>
-                            <a href="/#">Sign Up</a>
+                            <a href="/#">Add New Story</a>
                         </li>
                     </ul>
                 </nav>
