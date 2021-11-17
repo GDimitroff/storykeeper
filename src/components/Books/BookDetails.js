@@ -1,21 +1,29 @@
 import { useState, useEffect } from 'react';
 
-import Modal from '../UI/Modal';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
+import Modal from '../UI/Modal';
 import * as bookService from '../../services/bookService';
 import styles from './BookDetails.module.css';
 
-const BookDetails = (props) => {
+const BookDetails = () => {
+    const { bookId } = useParams();
     const [book, setBook] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
-        bookService.getBookById(props.id).then((book) => {
+        bookService.getBookById(bookId).then((book) => {
             setBook(book);
         });
-    });
+    }, [bookId]);
+
+    const onClose = () => {
+        navigate('/');
+    };
 
     return (
-        <Modal onClose={props.onClose}>
+        <Modal onClose={onClose}>
             <article className={styles['book-details']}>
                 <div className={styles['book-image']}>
                     <img src={book.imageUrl} alt={book.title} />
@@ -35,7 +43,7 @@ const BookDetails = (props) => {
                         <button className="btn btn-danger">Delete</button>
                         <button
                             className={styles['btn-close']}
-                            onClick={props.onClose}>
+                            onClick={onClose}>
                             X
                         </button>
                     </div>

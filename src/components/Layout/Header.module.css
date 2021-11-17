@@ -1,3 +1,7 @@
+.link {
+    text-decoration: none;
+}
+
 .header {
     position: fixed;
     width: 100%;
@@ -66,7 +70,7 @@
 
 .main-image {
     width: 100%;
-    height: 30rem;
+    height: 40rem;
     overflow: hidden;
     box-shadow: 0 3px 18px rgba(155, 117, 13, 0.25);
 }

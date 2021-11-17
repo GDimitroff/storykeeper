@@ -1,25 +1,12 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
-import BookDetails from './BookDetails';
 import styles from './BookItem.module.css';
 
 const BookItem = (props) => {
-    const [detailsShown, setDetailsShown] = useState(false);
-
-    const showDetailsHandler = () => {
-        setDetailsShown(true);
-    };
-
-    const hideDetailsHandler = () => {
-        setDetailsShown(false);
-    };
-
     return (
         <Fragment>
-            {detailsShown && (
-                <BookDetails onClose={hideDetailsHandler} id={props.id} />
-            )}
-            <article className={styles.book} onClick={showDetailsHandler}>
+            <Link to={`/books/${props.id}`} className={styles.book}>
                 <div className={styles['book-image']}>
                     <img src={props.imageUrl} alt={props.title} />
                 </div>
@@ -30,7 +17,7 @@ const BookItem = (props) => {
                         {props.description.slice(0, 270) + '...'}
                     </p>
                 </div>
-            </article>
+            </Link>
         </Fragment>
     );
 };

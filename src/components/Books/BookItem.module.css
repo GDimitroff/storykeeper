@@ -1,4 +1,6 @@
 .book {
+    text-decoration: none;
+    color: rgb(51, 51, 51);
     flex-basis: 32%;
     background-color: #f9f6f0;
     display: flex;
