@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Header from './components/Layout/Header';
+import AddNewBook from './components/Books/AddNewBook';
 import Books from './components/Books/Books';
 import BookDetails from './components/Books/BookDetails';
 import Footer from './components/Layout/Footer';
@@ -25,6 +26,14 @@ function App() {
                         </>
                     }
                 />
+                <Route
+                    path="/add-new-book"
+                    element={
+                        <>
+                            <Books />
+                            <AddNewBook />
+                        </>
+                    }></Route>
             </Routes>
             <Footer />
         </Fragment>

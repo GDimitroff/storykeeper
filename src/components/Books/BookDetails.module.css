@@ -81,15 +81,11 @@
 .btn-settings {
     color: #fff;
     background-color: #888;
-    top: 28px;
-    right: -22px;
 }
 
 .btn-delete {
     color: #fff;
     background-color: #888;
-    top: 78px;
-    right: -22px;
 }
 
 .btn-delete:hover {

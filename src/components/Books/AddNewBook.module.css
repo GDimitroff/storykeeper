@@ -1,0 +1,166 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form {
+    flex-basis: 45%;
+}
+
+.form-control {
+    margin-bottom: 1rem;
+}
+
+.form-control input,
+.form-control textarea,
+.form-control label {
+    display: block;
+    font-size: 1.6rem;
+}
+
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-control input,
+.form-control textarea {
+    font-family: inherit;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    border: 1px solid #e2d4b7;
+    width: 30rem;
+    max-width: 100%;
+    resize: none;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+    outline: none;
+    border-color: #3b2f17;
+    background-color: #e2d4b7;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #f9f6f0;
+    border-radius: 3px;
+    padding: 0.3rem;
+    top: -25px;
+    right: -25px;
+}
+
+.form-actions button {
+    cursor: pointer;
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 3px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms;
+}
+
+.form-actions button:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.btn {
+    cursor: pointer;
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 3px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms;
+}
+
+.btn-add {
+    color: #fff;
+    background-color: lightgreen;
+    top: -22px;
+    right: -22px;
+}
+
+.btn-add:disabled:hover {
+    color: #fff;
+    background-color: lightgreen;
+    cursor: not-allowed;
+}
+
+.btn-add:hover {
+    color: #fff;
+    background-color: darkgreen;
+}
+
+.btn-close {
+    color: #fff;
+    background-color: lightcoral;
+}
+
+.btn-close:hover {
+    color: #fff;
+    background-color: #9b2226;
+}
+
+.invalid input,
+.invalid textarea {
+    border: 1px solid #b40e0e;
+    background-color: #fddddd;
+}
+
+.invalid input:focus,
+.invalid textarea:focus {
+    border-color: #ff8800;
+    background-color: #fbe8d2;
+}
+
+.error-text {
+    color: #b40e0e;
+}
+
+.book-preview {
+    flex-basis: 70%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.book-info {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+}
+
+.book-title {
+    font-size: 3.4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.book-author {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+}
+
+.book-description {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    line-height: 1.6;
+}
+
+.book-image {
+    flex-basis: 100%;
+    margin-right: 2rem;
+}
+
+.book-image img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
