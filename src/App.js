@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Header from './components/Layout/Header';
 import Books from './components/Books/Books';
@@ -12,6 +12,10 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Books />} />
+                <Route
+                    path="/books"
+                    element={<Navigate to="/" replace={true} />}
+                />
                 <Route
                     path="/books/:bookId"
                     element={

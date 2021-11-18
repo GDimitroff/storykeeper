@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faCog, faTrash } from '@fortawesome/free-solid-svg-icons';
+
+import * as bookService from '../../services/bookService';
 
 import Modal from '../UI/Modal';
-import * as bookService from '../../services/bookService';
 import styles from './BookDetails.module.css';
 
 const BookDetails = () => {
@@ -39,12 +41,18 @@ const BookDetails = () => {
                         </div>
                     </div>
                     <div className={styles.buttons}>
-                        <button className="btn btn-primary">Edit</button>
-                        <button className="btn btn-danger">Delete</button>
                         <button
-                            className={styles['btn-close']}
+                            className={`${styles.btn} ${styles['btn-close']}`}
                             onClick={onClose}>
-                            X
+                            <FontAwesomeIcon icon={faMinus} size="lg" />
+                        </button>
+                        <button
+                            className={`${styles.btn} ${styles['btn-settings']}`}>
+                            <FontAwesomeIcon icon={faCog} size="lg" />
+                        </button>
+                        <button
+                            className={`${styles.btn} ${styles['btn-delete']}`}>
+                            <FontAwesomeIcon icon={faTrash} size="lg" />
                         </button>
                     </div>
                 </div>

@@ -40,34 +40,58 @@
 
 .buttons {
     display: flex;
-    justify-content: flex-end;
-}
-
-.buttons button:first-child {
-    margin-right: 0.7rem;
-}
-
-.btn-close {
-    font-family: inherit;
-    font-size: 1.6rem;
-    font-weight: 700;
-    cursor: pointer;
+    flex-direction: column;
     position: absolute;
-    color: #fff;
-    border: 3px solid #fff;
-    background-color: #555;
-    border-radius: 50%;
-    width: 4.8rem;
-    height: 4.8rem;
-    top: -22px;
-    right: -22px;
+    background-color: #f9f6f0;
+    border-radius: 3px;
+    padding: 0.3rem;
+    top: -25px;
+    right: -25px;
+}
+
+.buttons button:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.btn {
+    cursor: pointer;
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 3px;
+    border: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 300ms;
 }
 
-.btn-close:hover {
+.btn-close {
     color: #fff;
-    background-color: red;
+    background-color: #888;
+    top: -22px;
+    right: -22px;
+}
+
+.btn-close:hover,
+.btn-settings:hover {
+    color: #333;
+    background-color: #e2d4b7;
+}
+
+.btn-settings {
+    color: #fff;
+    background-color: #888;
+    top: 28px;
+    right: -22px;
+}
+
+.btn-delete {
+    color: #fff;
+    background-color: #888;
+    top: 78px;
+    right: -22px;
+}
+
+.btn-delete:hover {
+    background-color: #9b2226;
 }
