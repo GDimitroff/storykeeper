@@ -8,6 +8,10 @@ import Modal from '../UI/Modal';
 import styles from './AddNewBook.module.css';
 
 const isNotEmpty = (value) => value.trim() !== '';
+const startsWithHttps = (value) =>
+    value.trim().startsWith('https://') &&
+    (value.trim().endsWith('.jpg') || value.trim().endsWith('.png'));
+const maxLength = (value) => value.trim().length <= 400 && value.trim() !== '';
 
 const AddNewBook = () => {
     const navigate = useNavigate();
@@ -41,7 +45,7 @@ const AddNewBook = () => {
         valueChangeHandler: descriptionChangeHandler,
         inputBlurHandler: descriptionBlurHandler,
         reset: resetDescriptionInput,
-    } = useInput(isNotEmpty);
+    } = useInput(maxLength);
 
     const {
         value: enteredImageUrl,
@@ -50,7 +54,7 @@ const AddNewBook = () => {
         valueChangeHandler: imageUrlChangeHandler,
         inputBlurHandler: imageUrlBlurHandler,
         reset: resetImageUrlInput,
-    } = useInput(isNotEmpty);
+    } = useInput(startsWithHttps);
 
     let formIsValid = false;
     if (
@@ -85,8 +89,29 @@ const AddNewBook = () => {
 
     return (
         <Modal onClose={onClose}>
+            <h1 className={styles.heading}>Add New Book</h1>
             <div className={styles.container}>
                 <form onSubmit={submitHandler} className={styles.form}>
+                    <div
+                        className={`${styles['form-control']} ${
+                            imageUrlInputHasError ? styles['invalid'] : ''
+                        }`}>
+                        <label htmlFor="imageUrl">Image URL</label>
+                        <input
+                            type="text"
+                            id="imageUrl"
+                            value={enteredImageUrl}
+                            onChange={imageUrlChangeHandler}
+                            onBlur={imageUrlBlurHandler}
+                        />
+                        {imageUrlInputHasError && (
+                            <p className={styles['error-text']}>
+                                Image URL should start with https and ends with
+                                .jpg or .png
+                            </p>
+                        )}
+                    </div>
+
                     <div
                         className={`${styles['form-control']} ${
                             titleInputHasError ? styles['invalid'] : ''
@@ -101,7 +126,7 @@ const AddNewBook = () => {
                         />
                         {titleInputHasError && (
                             <p className={styles['error-text']}>
-                                First name must not be empty!
+                                Title of the book cannot be empty
                             </p>
                         )}
                     </div>
@@ -120,7 +145,7 @@ const AddNewBook = () => {
                         />
                         {authorInputHasError && (
                             <p className={styles['error-text']}>
-                                Last name must not be empty!
+                                Author name cannot be empty
                             </p>
                         )}
                     </div>
@@ -139,26 +164,8 @@ const AddNewBook = () => {
                         />
                         {descriptionInputHasError && (
                             <p className={styles['error-text']}>
-                                Enter valid email address
-                            </p>
-                        )}
-                    </div>
-
-                    <div
-                        className={`${styles['form-control']} ${
-                            imageUrlInputHasError ? styles['invalid'] : ''
-                        }`}>
-                        <label htmlFor="imageUrl">Image URL</label>
-                        <input
-                            type="text"
-                            id="imageUrl"
-                            value={enteredImageUrl}
-                            onChange={imageUrlChangeHandler}
-                            onBlur={imageUrlBlurHandler}
-                        />
-                        {imageUrlInputHasError && (
-                            <p className={styles['error-text']}>
-                                Last name must not be empty!
+                                Description cannot be empty or above 400
+                                characters
                             </p>
                         )}
                     </div>
@@ -179,10 +186,7 @@ const AddNewBook = () => {
 
                 <article className={styles['book-preview']}>
                     <div className={styles['book-image']}>
-                        <img
-                            src={enteredImageUrl}
-                            alt={`Book cover of ${enteredTitle}`}
-                        />
+                        <img src={enteredImageUrl} alt={enteredTitle} />
                     </div>
                     <div className={styles['book-info']}>
                         <div className={styles['book-title']}>
