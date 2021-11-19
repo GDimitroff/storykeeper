@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 
+import * as bookService from '../../services/bookService';
+
 import Modal from '../UI/Modal';
 import styles from './AddNewBook.module.css';
 
@@ -73,18 +75,21 @@ const AddNewBook = () => {
             return;
         }
 
-        console.log('Submitted!');
-        console.log(
-            enteredTitle,
-            enteredAuthor,
-            enteredDescription,
-            enteredImageUrl
-        );
+        const book = {
+            title: enteredTitle,
+            author: enteredAuthor,
+            description: enteredDescription,
+            imageUrl: enteredImageUrl,
+        };
+
+        bookService.addNewBook(book);
 
         resetTitleInput();
         resetAuthorInput();
         resetDescriptionInput();
         resetImageUrlInput();
+
+        navigate('/');
     };
 
     return (

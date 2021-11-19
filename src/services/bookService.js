@@ -12,3 +12,15 @@ export async function getBookById(id) {
 
     return await response.json();
 }
+
+export async function addNewBook(book) {
+    const response = await fetch(`${baseUrl}/books.json`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(book),
+    });
+
+    console.log(response);
+}

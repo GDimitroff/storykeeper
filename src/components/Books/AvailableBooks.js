@@ -31,7 +31,7 @@ const AvailableBooks = () => {
                 setIsLoading(false);
                 setHttpError(error.message);
             });
-    }, []);
+    }, [books]);
 
     if (isLoading) {
         return (
