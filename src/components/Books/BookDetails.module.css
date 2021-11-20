@@ -4,18 +4,17 @@
 }
 
 .book-image {
-    flex-basis: 50%;
+    flex-basis: 35%;
 }
 
 .book-image img {
     width: 100%;
-    height: 550px;
     object-fit: cover;
     border-radius: 3px;
 }
 
 .book-content {
-    flex-basis: 45%;
+    flex-basis: 60%;
     display: flex;
     flex-flow: column;
     justify-content: space-between;

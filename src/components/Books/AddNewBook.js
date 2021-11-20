@@ -13,7 +13,7 @@ const isNotEmpty = (value) => value.trim() !== '';
 const startsWithHttps = (value) =>
     value.trim().startsWith('https://') &&
     (value.trim().endsWith('.jpg') || value.trim().endsWith('.png'));
-const maxLength = (value) => value.trim().length <= 400 && value.trim() !== '';
+const maxLength = (value) => value.trim().length <= 500 && value.trim() !== '';
 
 const AddNewBook = () => {
     const navigate = useNavigate();
@@ -169,7 +169,7 @@ const AddNewBook = () => {
                         />
                         {descriptionInputHasError && (
                             <p className={styles['error-text']}>
-                                Description cannot be empty or above 400
+                                Description cannot be empty or above 500
                                 characters
                             </p>
                         )}
