@@ -20,12 +20,17 @@ const BookDetails = () => {
         });
     }, [bookId]);
 
-    const onClose = () => {
+    const onCloseHandler = () => {
+        navigate('/');
+    };
+
+    const onDeleteHandler = () => {
+        bookService.deleteBook(bookId);
         navigate('/');
     };
 
     return (
-        <Modal onClose={onClose}>
+        <Modal onClose={onCloseHandler}>
             <article className={styles['book-details']}>
                 <div className={styles['book-image']}>
                     <img src={book.imageUrl} alt={book.title} />
@@ -43,7 +48,7 @@ const BookDetails = () => {
                     <div className={styles.buttons}>
                         <button
                             className={`${styles.btn} ${styles['btn-close']}`}
-                            onClick={onClose}>
+                            onClick={onCloseHandler}>
                             <FontAwesomeIcon icon={faMinus} size="lg" />
                         </button>
                         <button
@@ -51,7 +56,8 @@ const BookDetails = () => {
                             <FontAwesomeIcon icon={faCog} size="lg" />
                         </button>
                         <button
-                            className={`${styles.btn} ${styles['btn-delete']}`}>
+                            className={`${styles.btn} ${styles['btn-delete']}`}
+                            onClick={onDeleteHandler}>
                             <FontAwesomeIcon icon={faTrash} size="lg" />
                         </button>
                     </div>
