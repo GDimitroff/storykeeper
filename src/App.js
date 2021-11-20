@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import AddNewBook from './components/Books/AddNewBook';
@@ -8,9 +7,11 @@ import BookDetails from './components/Books/BookDetails';
 import Footer from './components/Layout/Footer';
 import EditBook from './components/Books/EditBook';
 
+import { BooksContextProvider } from './store/books-context';
+
 function App() {
     return (
-        <Fragment>
+        <BooksContextProvider>
             <Header />
             <Routes>
                 <Route path="/" element={<Books />} />
@@ -47,7 +48,7 @@ function App() {
                 />
             </Routes>
             <Footer />
-        </Fragment>
+        </BooksContextProvider>
     );
 }
 

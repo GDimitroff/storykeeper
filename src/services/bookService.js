@@ -14,13 +14,15 @@ export async function getBookById(id) {
 }
 
 export async function addNewBook(book) {
-    await fetch(`${baseUrl}/books.json`, {
+    const response = await fetch(`${baseUrl}/books.json`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(book),
     });
+
+    return await response.json();
 }
 
 export async function deleteBook(id) {

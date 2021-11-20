@@ -1,13 +1,14 @@
-import useInput from '../../hooks/use-input';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import useInput from '../../hooks/use-input';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import * as bookService from '../../services/bookService';
-
 import Modal from '../UI/Modal';
 import styles from './AddNewBook.module.css';
+
+import BooksContext from '../../store/books-context';
 
 const isNotEmpty = (value) => value.trim() !== '';
 const startsWithHttps = (value) =>
@@ -17,6 +18,8 @@ const maxLength = (value) => value.trim().length <= 500 && value.trim() !== '';
 
 const AddNewBook = () => {
     const navigate = useNavigate();
+
+    const ctx = useContext(BooksContext);
 
     const onClose = () => {
         navigate('/');
@@ -82,7 +85,7 @@ const AddNewBook = () => {
             imageUrl: enteredImageUrl,
         };
 
-        bookService.addNewBook(book);
+        ctx.addNewBook(book);
 
         resetTitleInput();
         resetAuthorInput();

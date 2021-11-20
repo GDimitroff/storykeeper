@@ -1,37 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 
-import * as bookService from '../../services/bookService';
+import BooksContext from '../../store/books-context';
+
 import BookItem from './BookItem';
 import classes from './AvailableBooks.module.css';
 
 const AvailableBooks = () => {
-    const [books, setBooks] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [httpError, setHttpError] = useState(null);
+    const ctx = useContext(BooksContext);
 
-    useEffect(() => {
-        bookService
-            .getAllBooks()
-            .then((data) => {
-                const loadedBooks = [];
-                for (const key in data) {
-                    loadedBooks.push({
-                        id: key,
-                        title: data[key].title,
-                        author: data[key].author,
-                        description: data[key].description,
-                        imageUrl: data[key].imageUrl,
-                    });
-                }
-
-                setBooks(loadedBooks);
-                setIsLoading(false);
-            })
-            .catch((error) => {
-                setIsLoading(false);
-                setHttpError(error.message);
-            });
-    }, []);
+    const books = ctx.books;
+    const httpError = ctx.httpError;
+    const isLoading = ctx.isLoading;
 
     if (isLoading) {
         return (
