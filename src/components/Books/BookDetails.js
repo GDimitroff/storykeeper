@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +6,7 @@ import { faMinus, faCog, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import * as bookService from '../../services/bookService';
 
+import BooksContext from '../../store/books-context';
 import Modal from '../UI/Modal';
 import styles from './BookDetails.module.css';
 
@@ -13,6 +14,7 @@ const BookDetails = () => {
     const { bookId } = useParams();
     const [book, setBook] = useState({});
     const navigate = useNavigate();
+    const ctx = useContext(BooksContext);
 
     useEffect(() => {
         bookService.getBookById(bookId).then((book) => {
@@ -24,8 +26,13 @@ const BookDetails = () => {
         navigate('/');
     };
 
+    const onEditHandler = () => {
+        navigate(`/books/${bookId}/edit`, { state: { ...book, id: bookId } });
+    };
+
     const onDeleteHandler = () => {
         bookService.deleteBook(bookId);
+        ctx.removeBook(bookId);
         navigate('/');
     };
 
@@ -52,7 +59,8 @@ const BookDetails = () => {
                             <FontAwesomeIcon icon={faMinus} size="lg" />
                         </button>
                         <button
-                            className={`${styles.btn} ${styles['btn-settings']}`}>
+                            className={`${styles.btn} ${styles['btn-settings']}`}
+                            onClick={onEditHandler}>
                             <FontAwesomeIcon icon={faCog} size="lg" />
                         </button>
                         <button

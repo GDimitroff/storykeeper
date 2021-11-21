@@ -18,10 +18,9 @@ const maxLength = (value) => value.trim().length <= 500 && value.trim() !== '';
 
 const AddNewBook = () => {
     const navigate = useNavigate();
-
     const ctx = useContext(BooksContext);
 
-    const onClose = () => {
+    const onCloseHandler = () => {
         navigate('/');
     };
 
@@ -96,7 +95,7 @@ const AddNewBook = () => {
     };
 
     return (
-        <Modal onClose={onClose}>
+        <Modal onClose={onCloseHandler}>
             <h1 className={styles.heading}>Add New Book</h1>
             <div className={styles.container}>
                 <form onSubmit={submitHandler} className={styles.form}>
@@ -185,7 +184,7 @@ const AddNewBook = () => {
                             <FontAwesomeIcon icon={faCheck} size="lg" />
                         </button>
                         <button
-                            onClick={onClose}
+                            onClick={onCloseHandler}
                             className={`${styles.btn} ${styles['btn-close']}`}>
                             <FontAwesomeIcon icon={faTimes} size="lg" />
                         </button>

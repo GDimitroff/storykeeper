@@ -50,6 +50,10 @@ export const BooksContextProvider = (props) => {
         );
     };
 
+    const removeBook = (id) => {
+        setBooks((prevState) => prevState.filter((book) => book.id !== id));
+    };
+
     return (
         <BooksContext.Provider
             value={{
@@ -57,6 +61,7 @@ export const BooksContextProvider = (props) => {
                 isLoading,
                 httpError,
                 addNewBook,
+                removeBook,
             }}>
             {props.children}
         </BooksContext.Provider>
