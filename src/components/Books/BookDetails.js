@@ -20,7 +20,7 @@ const BookDetails = () => {
         bookService.getBookById(bookId).then((book) => {
             setBook(book);
         });
-    }, [bookId]);
+    }, [ctx, bookId]);
 
     const onCloseHandler = () => {
         navigate('/');

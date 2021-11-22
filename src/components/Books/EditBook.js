@@ -94,7 +94,7 @@ const EditBook = () => {
     };
 
     const onCloseHandler = () => {
-        navigate('/');
+        navigate(`/books/${book.id}`);
     };
 
     const submitHandler = (event) => {
@@ -118,7 +118,7 @@ const EditBook = () => {
         setEnteredDescription('');
         setEnteredImageUrl('');
 
-        navigate('/');
+        navigate(`/books/${book.id}`);
     };
 
     return (

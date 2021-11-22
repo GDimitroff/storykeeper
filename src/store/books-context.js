@@ -55,9 +55,9 @@ export const BooksContextProvider = (props) => {
         await bookService.updateBook(id, book);
 
         const index = books.findIndex((item) => item.id === id);
-
         const newBooks = [...books];
         newBooks[index] = { ...book, id: id };
+
         setBooks(newBooks);
     };
 
