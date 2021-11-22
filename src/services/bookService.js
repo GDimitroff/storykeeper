@@ -30,3 +30,15 @@ export async function deleteBook(id) {
         method: 'DELETE',
     });
 }
+
+export async function updateBook(id, book) {
+    const response = await fetch(`${baseUrl}/books/${id}.json`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(book),
+    });
+
+    return await response.json();
+}
