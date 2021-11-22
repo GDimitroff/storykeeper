@@ -118,7 +118,7 @@ const EditBook = () => {
         setEnteredDescription('');
         setEnteredImageUrl('');
 
-        navigate('/books/');
+        navigate('/');
     };
 
     return (
