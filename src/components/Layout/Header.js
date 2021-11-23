@@ -27,6 +27,9 @@ const Header = () => {
                         <li className={styles['nav-list-item']}>
                             <Link to="/add-new-book">Add New Book</Link>
                         </li>
+                        <li className={styles['nav-list-item']}>
+                            <Link to="/auth">Login</Link>
+                        </li>
                     </ul>
                 </nav>
             </header>

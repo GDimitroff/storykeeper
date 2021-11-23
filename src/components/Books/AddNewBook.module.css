@@ -8,25 +8,24 @@
 .heading::after {
     content: '';
     display: inline-block;
-    cursor: pointer;
-    width: 200px;
+    width: 250px;
     height: 3px;
     position: absolute;
     background-color: #e2d4b7;
-    top: 35px;
-    left: 456px;
+    top: 4rem;
+    left: 33.2rem;
 }
 
 .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 5rem 0 5rem;
-    height: 50rem;
+    margin: 0 1.5rem 0 1.5rem;
+    height: 48rem;
 }
 
 .form {
-    flex-basis: 40%;
+    flex-basis: 38%;
 }
 
 .form-control {
@@ -52,7 +51,7 @@
     font-size: 1.2rem;
     border-radius: 3px;
     border: 1px solid #e2d4b7;
-    width: 30rem;
+    width: 25rem;
     max-width: 100%;
     resize: none;
 }
@@ -147,6 +146,7 @@
 .error-text {
     color: #b40e0e;
     font-size: 1.2rem;
+    width: 25rem;
 }
 
 .book-preview {

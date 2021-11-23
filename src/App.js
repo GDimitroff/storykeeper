@@ -6,6 +6,7 @@ import Books from './components/Books/Books';
 import BookDetails from './components/Books/BookDetails';
 import Footer from './components/Layout/Footer';
 import EditBook from './components/Books/EditBook';
+import Authentication from './components/Authentication/Authentication';
 
 import { BooksContextProvider } from './store/books-context';
 
@@ -43,6 +44,15 @@ function App() {
                         <>
                             <Books />
                             <AddNewBook />
+                        </>
+                    }
+                />
+                <Route
+                    path="/auth"
+                    element={
+                        <>
+                            <Books />
+                            <Authentication />
                         </>
                     }
                 />
