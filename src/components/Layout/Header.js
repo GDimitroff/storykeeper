@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import booksImage from '../../assets/books.jpg';
@@ -6,7 +6,11 @@ import styles from './Header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
+import AuthContext from '../../store/auth-context';
+
 const Header = () => {
+    const authCtx = useContext(AuthContext);
+
     return (
         <Fragment>
             <header className={styles.header}>
@@ -24,12 +28,21 @@ const Header = () => {
                 </Link>
                 <nav>
                     <ul className={styles['nav-list']}>
-                        <li className={styles['nav-list-item']}>
-                            <Link to="/add-new-book">Add New Book</Link>
-                        </li>
-                        <li className={styles['nav-list-item']}>
-                            <Link to="/auth">Login</Link>
-                        </li>
+                        {!authCtx.isLoggedIn && (
+                            <li className={styles['nav-list-item']}>
+                                <Link to="/auth">Login</Link>
+                            </li>
+                        )}
+                        {authCtx.isLoggedIn && (
+                            <>
+                                <li className={styles['nav-list-item']}>
+                                    <Link to="/add-new-book">Add New Book</Link>
+                                </li>
+                                <li className={styles['nav-list-item']}>
+                                    <Link to="/logout">Logout</Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </nav>
             </header>
