@@ -3,18 +3,18 @@
     text-align: center;
     margin-top: 2rem;
     font-size: 2.8rem;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
 .heading::after {
     content: '';
     display: inline-block;
-    width: 350px;
+    width: 10rem;
     height: 3px;
     position: absolute;
     background-color: #e2d4b7;
     top: 4rem;
-    left: 28.5rem;
+    left: 12.5rem;
 }
 
 .form {
@@ -26,12 +26,14 @@
 
 .form-control {
     margin-bottom: 1.5rem;
+    width: 90%;
 }
 
 .form-control input,
 .form-control label {
     display: block;
     font-size: 1.6rem;
+    width: 100%;
 }
 
 .form-control label {
@@ -45,7 +47,6 @@
     font-size: 1.2rem;
     border-radius: 3px;
     border: 1px solid #e2d4b7;
-    width: 30rem;
     max-width: 100%;
     resize: none;
 }
@@ -58,15 +59,23 @@
 
 .btn {
     font-family: inherit;
+    font-size: 1.6rem;
     cursor: pointer;
-    width: 4.4rem;
-    height: 4.4rem;
+    width: 90%;
+    margin: 1rem 0 2rem 0;
+    padding: 0.8rem;
     border-radius: 3px;
     border: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #e2d4b7;
+    background-color: #3b2f17;
     transition: all 300ms;
+}
+
+.btn:hover {
+    background-color: #614d25;
 }
 
 .invalid input,
@@ -84,4 +93,20 @@
 .error-text {
     color: #b40e0e;
     font-size: 1.2rem;
+}
+
+.text {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.switch {
+    cursor: pointer;
+    color: #3b2f17;
+    text-decoration: underline;
+}
+
+.switch:hover {
+    color: #886c34;
 }

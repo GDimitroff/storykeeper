@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Login.module.css';
 
-const Login = () => {
+const Login = (props) => {
     const [enteredUsername, setEnteredUsername] = useState('');
     const [enteredUsernameIsInvalid, setEnteredUsernameIsInvalid] =
         useState(false);
@@ -37,8 +37,8 @@ const Login = () => {
     };
 
     return (
-        <>
-            <h1 className={styles.heading}>Login to your account</h1>
+        <Fragment>
+            <h1 className={styles.heading}>Login</h1>
             <form
                 onSubmit={submitHandler}
                 className={styles.form}
@@ -72,7 +72,13 @@ const Login = () => {
 
                 <button className={styles.btn}>Login</button>
             </form>
-        </>
+            <p className={styles['text']}>
+                Don't have an account?{' '}
+                <span className={styles['switch']} onClick={props.onSwitch}>
+                    Switch to register.
+                </span>
+            </p>
+        </Fragment>
     );
 };
 

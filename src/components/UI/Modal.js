@@ -1,16 +1,17 @@
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
-import classes from './Modal.module.css';
+import styles from './Modal.module.css';
 
 const Backdrop = (props) => {
-    return <div className={classes.backdrop} onClick={props.onClose}></div>;
+    return <div className={styles.backdrop} onClick={props.onClose}></div>;
 };
 
 const ModalOverlay = (props) => {
+    const className = props.modalType ? 'auth' : 'modal';
     return (
-        <div className={classes.modal}>
-            <div className={classes.content}>{props.children}</div>
+        <div className={styles[className]}>
+            <div className={styles.content}>{props.children}</div>
         </div>
     );
 };
@@ -25,7 +26,9 @@ const Modal = (props) => {
                 portalElement
             )}
             {ReactDOM.createPortal(
-                <ModalOverlay>{props.children}</ModalOverlay>,
+                <ModalOverlay modalType={props.modalType}>
+                    {props.children}
+                </ModalOverlay>,
                 portalElement
             )}
         </Fragment>

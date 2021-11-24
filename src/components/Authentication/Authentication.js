@@ -9,7 +9,7 @@ const Authentication = () => {
     const [isLogin, setIsLogin] = useState(true);
     const navigate = useNavigate();
 
-    const onClickHandler = () => {
+    const onSwitchHandler = () => {
         setIsLogin((prevState) => !prevState);
     };
 
@@ -18,11 +18,12 @@ const Authentication = () => {
     };
 
     return (
-        <Modal onClose={onCloseHandler}>
-            {isLogin ? <Login /> : <Register />}
-            <button onClick={onClickHandler}>
-                Switch to {isLogin ? 'Register' : 'Login'}
-            </button>
+        <Modal modalType="auth" onClose={onCloseHandler}>
+            {isLogin ? (
+                <Login onSwitch={onSwitchHandler} />
+            ) : (
+                <Register onSwitch={onSwitchHandler} />
+            )}
         </Modal>
     );
 };
