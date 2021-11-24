@@ -9,12 +9,12 @@
 .heading::after {
     content: '';
     display: inline-block;
-    width: 10rem;
+    width: 13rem;
     height: 3px;
     position: absolute;
     background-color: #e2d4b7;
     top: 4rem;
-    left: 12.5rem;
+    left: 11.1rem;
 }
 
 .form {

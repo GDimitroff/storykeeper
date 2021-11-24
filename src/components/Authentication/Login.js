@@ -73,9 +73,9 @@ const Login = (props) => {
                 <button className={styles.btn}>Login</button>
             </form>
             <p className={styles['text']}>
-                Don't have an account?{' '}
+                Not registered?{' '}
                 <span className={styles['switch']} onClick={props.onSwitch}>
-                    Switch to register.
+                    Create an account
                 </span>
             </p>
         </Fragment>
