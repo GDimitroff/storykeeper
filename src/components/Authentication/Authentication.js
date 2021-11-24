@@ -68,7 +68,7 @@ const Authentication = () => {
             })
             .then((data) => {
                 authCtx.login(data.idToken);
-                navigate('/');
+                navigate('/', { replace: true });
             })
             .catch((error) => {
                 switch (error.message) {

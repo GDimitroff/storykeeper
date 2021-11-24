@@ -11,6 +11,10 @@ import AuthContext from '../../store/auth-context';
 const Header = () => {
     const authCtx = useContext(AuthContext);
 
+    const logoutHandler = () => {
+        authCtx.logout();
+    };
+
     return (
         <Fragment>
             <header className={styles.header}>
@@ -39,7 +43,9 @@ const Header = () => {
                                     <Link to="/add-new-book">Add New Book</Link>
                                 </li>
                                 <li className={styles['nav-list-item']}>
-                                    <Link to="/logout">Logout</Link>
+                                    <Link to="/" onClick={logoutHandler}>
+                                        Logout
+                                    </Link>
                                 </li>
                             </>
                         )}
