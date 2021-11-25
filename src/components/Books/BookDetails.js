@@ -18,7 +18,7 @@ const BookDetails = () => {
     const navigate = useNavigate();
     const ctx = useContext(BooksContext);
     const authCtx = useContext(AuthContext);
-    const isOwner = book.ownerId === authCtx.userId;
+    const isCreator = book.creatorId === authCtx.userId;
 
     useEffect(() => {
         bookService.getBookById(bookId).then((book) => {
@@ -62,14 +62,14 @@ const BookDetails = () => {
                             onClick={onCloseHandler}>
                             <FontAwesomeIcon icon={faMinus} size="lg" />
                         </button>
-                        {isOwner && (
+                        {isCreator && (
                             <button
                                 className={`${styles.btn} ${styles['btn-settings']}`}
                                 onClick={onEditHandler}>
                                 <FontAwesomeIcon icon={faCog} size="lg" />
                             </button>
                         )}
-                        {isOwner && (
+                        {isCreator && (
                             <button
                                 className={`${styles.btn} ${styles['btn-delete']}`}
                                 onClick={onDeleteHandler}>

@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import BooksContext from '../../store/books-context';
 
+import Loading from '../UI/Loading';
 import BookItem from './BookItem';
 import classes from './AvailableBooks.module.css';
 
@@ -15,7 +16,7 @@ const AvailableBooks = () => {
     if (isLoading) {
         return (
             <section className={classes['books-loading']}>
-                <p>Loading...</p>
+                <Loading />
             </section>
         );
     }

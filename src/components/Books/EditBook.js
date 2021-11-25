@@ -109,6 +109,7 @@ const EditBook = () => {
             author: enteredAuthor,
             description: enteredDescription,
             imageUrl: enteredImageUrl,
+            creatorId: book.creatorId,
         };
 
         ctx.updateBook(book.id, updatedBook);
