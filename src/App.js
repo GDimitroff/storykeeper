@@ -72,6 +72,16 @@ function App() {
                     />
                 )}
 
+                <Route
+                    path="/tita"
+                    element={
+                        <>
+                            <Books />
+                            {/* <Tita /> */}
+                        </>
+                    }
+                />
+
                 <Route path="/*" element={<Navigate to="/" replace={true} />} />
             </Routes>
             <Footer />
