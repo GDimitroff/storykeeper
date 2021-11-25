@@ -9,6 +9,7 @@ import Modal from '../UI/Modal';
 import styles from './AddNewBook.module.css';
 
 import BooksContext from '../../store/books-context';
+import AuthContext from '../../store/auth-context';
 
 const isNotEmpty = (value) => value.trim() !== '';
 const startsWithHttps = (value) =>
@@ -19,6 +20,7 @@ const maxLength = (value) => value.trim().length <= 500 && value.trim() !== '';
 const AddNewBook = () => {
     const navigate = useNavigate();
     const ctx = useContext(BooksContext);
+    const authCtx = useContext(AuthContext);
 
     const onCloseHandler = () => {
         navigate('/');
@@ -82,6 +84,7 @@ const AddNewBook = () => {
             author: enteredAuthor,
             description: enteredDescription,
             imageUrl: enteredImageUrl,
+            ownerId: authCtx.userId,
         };
 
         ctx.addNewBook(book);

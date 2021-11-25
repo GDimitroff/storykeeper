@@ -64,8 +64,31 @@
 
 .nav-list-item a:hover,
 .nav-list-item a:active {
+    color: #e2d4b7;
+    background-color: rgb(88, 70, 33);
+    border: 3px solid rgb(88, 70, 33);
+}
+
+.btn-logout a {
+    font-size: 1.6rem;
+    padding: 10px 12px;
+    text-decoration: none;
+    border: 3px solid #3b2f17;
+    border-radius: 3px;
+}
+
+.btn-logout a:link,
+.btn-logout a:visited {
     color: #3b2f17;
     background-color: #e2d4b7;
+
+    transition: all 500ms;
+}
+
+.btn-logout a:hover,
+.btn-logout a:active {
+    color: #e2d4b7;
+    background-color: #3b2f17;
 }
 
 .main-image {

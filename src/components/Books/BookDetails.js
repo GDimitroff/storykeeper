@@ -7,6 +7,8 @@ import { faMinus, faCog, faTrash } from '@fortawesome/free-solid-svg-icons';
 import * as bookService from '../../services/bookService';
 
 import BooksContext from '../../store/books-context';
+import AuthContext from '../../store/auth-context';
+
 import Modal from '../UI/Modal';
 import styles from './BookDetails.module.css';
 
@@ -15,6 +17,8 @@ const BookDetails = () => {
     const [book, setBook] = useState({});
     const navigate = useNavigate();
     const ctx = useContext(BooksContext);
+    const authCtx = useContext(AuthContext);
+    const isOwner = book.ownerId === authCtx.userId;
 
     useEffect(() => {
         bookService.getBookById(bookId).then((book) => {
@@ -58,16 +62,20 @@ const BookDetails = () => {
                             onClick={onCloseHandler}>
                             <FontAwesomeIcon icon={faMinus} size="lg" />
                         </button>
-                        <button
-                            className={`${styles.btn} ${styles['btn-settings']}`}
-                            onClick={onEditHandler}>
-                            <FontAwesomeIcon icon={faCog} size="lg" />
-                        </button>
-                        <button
-                            className={`${styles.btn} ${styles['btn-delete']}`}
-                            onClick={onDeleteHandler}>
-                            <FontAwesomeIcon icon={faTrash} size="lg" />
-                        </button>
+                        {isOwner && (
+                            <button
+                                className={`${styles.btn} ${styles['btn-settings']}`}
+                                onClick={onEditHandler}>
+                                <FontAwesomeIcon icon={faCog} size="lg" />
+                            </button>
+                        )}
+                        {isOwner && (
+                            <button
+                                className={`${styles.btn} ${styles['btn-delete']}`}
+                                onClick={onDeleteHandler}>
+                                <FontAwesomeIcon icon={faTrash} size="lg" />
+                            </button>
+                        )}
                     </div>
                 </div>
             </article>

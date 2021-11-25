@@ -42,7 +42,7 @@ const Header = () => {
                                 <li className={styles['nav-list-item']}>
                                     <Link to="/add-new-book">Add New Book</Link>
                                 </li>
-                                <li className={styles['nav-list-item']}>
+                                <li className={styles['btn-logout']}>
                                     <Link to="/" onClick={logoutHandler}>
                                         Logout
                                     </Link>
