@@ -6,7 +6,7 @@ import styles from './BookItem.module.css';
 const BookItem = (props) => {
     return (
         <Fragment>
-            <Link to={`/books/${props.id}`} className={styles.book}>
+            <Link to={props.url} className={styles.book}>
                 <div className={styles['book-image']}>
                     <img src={props.imageUrl} alt={props.title} />
                 </div>

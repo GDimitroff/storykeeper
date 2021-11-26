@@ -8,6 +8,7 @@ import AddNewBook from './components/Books/AddNewBook';
 import Footer from './components/Layout/Footer';
 import EditBook from './components/Books/EditBook';
 import Authentication from './components/Authentication/Authentication';
+import Profile from './components/Profile/Profile';
 
 import { BooksContextProvider } from './store/books-context';
 import AuthContext from './store/auth-context';
@@ -55,6 +56,27 @@ function App() {
                             <>
                                 <Books />
                                 <AddNewBook />
+                            </>
+                        }
+                    />
+                )}
+
+                {authCtx.isLoggedIn && (
+                    <Route path="/profile" element={<Profile />} />
+                )}
+
+                <Route
+                    path="/profile/mybooks"
+                    element={<Navigate to="/profile" replace={true} />}
+                />
+
+                {authCtx.isLoggedIn && (
+                    <Route
+                        path="/profile/mybooks/:bookId"
+                        element={
+                            <>
+                                <Profile />
+                                <BookDetails />
                             </>
                         }
                     />

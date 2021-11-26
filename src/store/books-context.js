@@ -28,6 +28,7 @@ export const BooksContextProvider = (props) => {
                         author: data[key].author,
                         description: data[key].description,
                         imageUrl: data[key].imageUrl,
+                        creatorId: data[key].creatorId,
                     });
                 }
 

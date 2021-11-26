@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faCog, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +20,9 @@ const BookDetails = () => {
     const authCtx = useContext(AuthContext);
     const isCreator = book.creatorId === authCtx.userId;
 
+    let location = useLocation().pathname.split('/')[1];
+    location = location === 'books' ? '/' : '/profile';
+
     useEffect(() => {
         bookService.getBookById(bookId).then((book) => {
             setBook(book);
@@ -27,7 +30,7 @@ const BookDetails = () => {
     }, [ctx, bookId]);
 
     const onCloseHandler = () => {
-        navigate('/');
+        navigate(location);
     };
 
     const onEditHandler = () => {

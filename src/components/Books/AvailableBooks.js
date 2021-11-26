@@ -39,6 +39,7 @@ const AvailableBooks = () => {
                 author={book.author}
                 description={book.description}
                 imageUrl={book.imageUrl}
+                url={`/books/${book.id}`}
             />
         );
     });
