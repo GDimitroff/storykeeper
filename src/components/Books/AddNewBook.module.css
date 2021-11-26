@@ -63,39 +63,13 @@
     background-color: #e2d4b7;
 }
 
-.form-actions {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: #f9f6f0;
-    border-radius: 3px;
-    padding: 0.3rem;
-    top: -25px;
-    right: -25px;
-}
-
-.form-actions button {
-    cursor: pointer;
-    width: 4.4rem;
-    height: 4.4rem;
-    border-radius: 3px;
-    border: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 300ms;
-}
-
-.form-actions button:not(:last-child) {
-    margin-bottom: 0.5rem;
-}
-
 .btn {
     cursor: pointer;
+    position: absolute;
     width: 4.4rem;
     height: 4.4rem;
     border-radius: 3px;
-    border: 0;
+    border: 2px solid #f9f6f0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,7 +86,7 @@
 .btn-add:disabled,
 .btn-add:disabled:hover {
     color: #fff;
-    background-color: lightgreen;
+    background-color: rgb(76, 182, 76);
     cursor: not-allowed;
 }
 
@@ -124,11 +98,13 @@
 .btn-close {
     color: #fff;
     background-color: #9b2226;
+    top: 20px;
+    right: -22px;
 }
 
 .btn-close:hover {
     color: #fff;
-    background-color: red;
+    background-color: #c5050b;
 }
 
 .invalid input,

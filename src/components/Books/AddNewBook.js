@@ -190,18 +190,16 @@ const AddNewBook = () => {
                         )}
                     </div>
 
-                    <div className={styles['form-actions']}>
-                        <button
-                            disabled={!formIsValid}
-                            className={`${styles.btn} ${styles['btn-add']}`}>
-                            <FontAwesomeIcon icon={faCheck} size="lg" />
-                        </button>
-                        <button
-                            onClick={onCloseHandler}
-                            className={`${styles.btn} ${styles['btn-close']}`}>
-                            <FontAwesomeIcon icon={faTimes} size="lg" />
-                        </button>
-                    </div>
+                    <button
+                        disabled={!formIsValid}
+                        className={`${styles.btn} ${styles['btn-add']}`}>
+                        <FontAwesomeIcon icon={faCheck} size="lg" />
+                    </button>
+                    <button
+                        onClick={onCloseHandler}
+                        className={`${styles.btn} ${styles['btn-close']}`}>
+                        <FontAwesomeIcon icon={faTimes} size="lg" />
+                    </button>
                 </form>
 
                 <article className={styles['book-preview']}>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import styles from './BooksSummary.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
 const QUOTES = [
     '“Sometimes, you read a book and it fills you with this weird evangelical zeal, and you become convinced that the shattered world will never be put back together unless and until all living humans read the book.” - John Green, The Fault in Our Stars',
@@ -34,9 +34,9 @@ const BooksSummary = () => {
     return (
         <section className={styles.summary}>
             <FontAwesomeIcon
-                icon={faHeart}
-                size="5x"
-                className={styles.heart}
+                icon={faBookOpen}
+                size="4x"
+                className={styles.book}
                 onClick={randomQuoteHandler}
             />
             <h2>Meet your next favorite story.</h2>

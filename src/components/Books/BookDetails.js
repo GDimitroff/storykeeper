@@ -2,7 +2,12 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faCog, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+    faTimes,
+    faCog,
+    faTrash,
+    faHeart,
+} from '@fortawesome/free-solid-svg-icons';
 
 import * as bookService from '../../services/bookService';
 
@@ -32,6 +37,8 @@ const BookDetails = () => {
     const onCloseHandler = () => {
         navigate(location);
     };
+
+    const onLikeHandler = () => {};
 
     const onEditHandler = () => {
         if (location === '/') {
@@ -67,27 +74,32 @@ const BookDetails = () => {
                             {book.description}
                         </div>
                     </div>
-                    <div className={styles.buttons}>
+                    <button
+                        className={`${styles.btn} ${styles['btn-close']}`}
+                        onClick={onCloseHandler}>
+                        <FontAwesomeIcon icon={faTimes} size="lg" />
+                    </button>
+                    {authCtx.isLoggedIn && !isCreator && (
                         <button
-                            className={`${styles.btn} ${styles['btn-close']}`}
-                            onClick={onCloseHandler}>
-                            <FontAwesomeIcon icon={faMinus} size="lg" />
+                            className={`${styles.btn} ${styles['btn-like']}`}
+                            onClick={onLikeHandler}>
+                            <FontAwesomeIcon icon={faHeart} size="lg" />
                         </button>
-                        {isCreator && (
-                            <button
-                                className={`${styles.btn} ${styles['btn-settings']}`}
-                                onClick={onEditHandler}>
-                                <FontAwesomeIcon icon={faCog} size="lg" />
-                            </button>
-                        )}
-                        {isCreator && (
-                            <button
-                                className={`${styles.btn} ${styles['btn-delete']}`}
-                                onClick={onDeleteHandler}>
-                                <FontAwesomeIcon icon={faTrash} size="lg" />
-                            </button>
-                        )}
-                    </div>
+                    )}
+                    {isCreator && (
+                        <button
+                            className={`${styles.btn} ${styles['btn-settings']}`}
+                            onClick={onEditHandler}>
+                            <FontAwesomeIcon icon={faCog} size="lg" />
+                        </button>
+                    )}
+                    {isCreator && (
+                        <button
+                            className={`${styles.btn} ${styles['btn-delete']}`}
+                            onClick={onDeleteHandler}>
+                            <FontAwesomeIcon icon={faTrash} size="lg" />
+                        </button>
+                    )}
                 </div>
             </article>
         </Modal>
