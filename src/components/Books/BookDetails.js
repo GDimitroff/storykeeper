@@ -34,13 +34,21 @@ const BookDetails = () => {
     };
 
     const onEditHandler = () => {
-        navigate(`/books/${bookId}/edit`, { state: { ...book, id: bookId } });
+        if (location === '/') {
+            navigate(`/books/${bookId}/edit`, {
+                state: { ...book, id: bookId },
+            });
+        } else {
+            navigate(`/profile/mybooks/${bookId}/edit`, {
+                state: { ...book, id: bookId },
+            });
+        }
     };
 
     const onDeleteHandler = () => {
         bookService.deleteBook(bookId);
         ctx.removeBook(bookId);
-        navigate('/');
+        navigate(location);
     };
 
     return (

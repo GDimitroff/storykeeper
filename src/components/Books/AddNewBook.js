@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import useInput from '../../hooks/use-input';
 
@@ -22,8 +22,14 @@ const AddNewBook = () => {
     const ctx = useContext(BooksContext);
     const authCtx = useContext(AuthContext);
 
+    const location = useLocation().pathname.split('/')[1];
+
     const onCloseHandler = () => {
-        navigate('/');
+        if (location === 'profile') {
+            navigate('/' + location);
+        } else {
+            navigate('/');
+        }
     };
 
     const {
@@ -84,7 +90,7 @@ const AddNewBook = () => {
             author: enteredAuthor,
             description: enteredDescription,
             imageUrl: enteredImageUrl,
-            ownerId: authCtx.userId,
+            creatorId: authCtx.userId,
         };
 
         ctx.addNewBook(book);
@@ -94,7 +100,11 @@ const AddNewBook = () => {
         resetDescriptionInput();
         resetImageUrlInput();
 
-        navigate('/');
+        if (location === 'profile') {
+            navigate('/' + location);
+        } else {
+            navigate('/');
+        }
     };
 
     return (

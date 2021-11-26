@@ -62,6 +62,18 @@ function App() {
                 )}
 
                 {authCtx.isLoggedIn && (
+                    <Route
+                        path="/profile/add-new-book"
+                        element={
+                            <>
+                                <Profile />
+                                <AddNewBook />
+                            </>
+                        }
+                    />
+                )}
+
+                {authCtx.isLoggedIn && (
                     <Route path="/profile" element={<Profile />} />
                 )}
 
@@ -77,6 +89,18 @@ function App() {
                             <>
                                 <Profile />
                                 <BookDetails />
+                            </>
+                        }
+                    />
+                )}
+
+                {authCtx.isLoggedIn && (
+                    <Route
+                        path="/profile/mybooks/:bookId/edit"
+                        element={
+                            <>
+                                <Profile />
+                                <EditBook />
                             </>
                         }
                     />

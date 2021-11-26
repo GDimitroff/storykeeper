@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import booksImage from '../../assets/books.jpg';
 import styles from './Header.module.css';
@@ -10,6 +10,7 @@ import AuthContext from '../../store/auth-context';
 
 const Header = () => {
     const authCtx = useContext(AuthContext);
+    const location = useLocation().pathname.split('/')[1];
 
     const logoutHandler = () => {
         authCtx.logout();
@@ -40,7 +41,9 @@ const Header = () => {
                         {authCtx.isLoggedIn && (
                             <>
                                 <li className={styles['nav-list-item']}>
-                                    <Link to="/add-new-book">Add New Book</Link>
+                                    <Link to={`${location}/add-new-book`}>
+                                        Add New Book
+                                    </Link>
                                 </li>
                                 <li className={styles['nav-list-item']}>
                                     <Link to="/profile">My profile</Link>

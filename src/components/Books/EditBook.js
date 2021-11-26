@@ -20,6 +20,7 @@ const EditBook = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const book = location.state;
+    const redirectUrl = location.pathname.split('/')[1];
 
     const [enteredTitle, setEnteredTitle] = useState(book.title);
     const [enteredTitleTouched, setEnteredTitleTouched] = useState(false);
@@ -94,7 +95,11 @@ const EditBook = () => {
     };
 
     const onCloseHandler = () => {
-        navigate(`/books/${book.id}`);
+        if (redirectUrl === 'books') {
+            navigate(`/books/${book.id}`);
+        } else {
+            navigate(`/profile/mybooks/${book.id}`);
+        }
     };
 
     const submitHandler = (event) => {
@@ -119,7 +124,11 @@ const EditBook = () => {
         setEnteredDescription('');
         setEnteredImageUrl('');
 
-        navigate(`/books/${book.id}`);
+        if (redirectUrl === 'books') {
+            navigate(`/books/${book.id}`);
+        } else {
+            navigate(`/profile/mybooks/${book.id}`);
+        }
     };
 
     return (
