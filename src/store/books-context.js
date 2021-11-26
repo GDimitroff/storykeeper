@@ -75,8 +75,9 @@ export const BooksContextProvider = (props) => {
         const index = books.findIndex((item) => item.id === bookId);
         const newBooks = [...books];
         let updatedBook = newBooks[index];
-        let likedBy = updatedBook.likedBy.slice() || [];
+        let likedBy = updatedBook.likedBy || [];
         updatedBook = { ...updatedBook, likedBy: [...likedBy, userId] };
+        newBooks[index] = updatedBook;
         setBooks(newBooks);
 
         await bookService.updateBook(bookId, updatedBook);
@@ -97,6 +98,7 @@ export const BooksContextProvider = (props) => {
         ];
 
         updatedBook = { ...updatedBook, likedBy: likedBy };
+        newBooks[index] = updatedBook;
         setBooks(newBooks);
 
         await bookService.updateBook(bookId, updatedBook);

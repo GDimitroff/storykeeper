@@ -36,14 +36,10 @@ const BookDetails = () => {
         bookService.getBookById(bookId).then((book) => {
             setBook(book);
 
-            if (!book.likedBy) {
+            if (!book.likedBy || !book.likedBy.includes(authCtx.userId)) {
                 setIsLiked(false);
             } else {
-                if (book.likedBy.includes(authCtx.userId)) {
-                    setIsLiked(true);
-                } else {
-                    setBook(false);
-                }
+                setIsLiked(true);
             }
         });
     }, [ctx, bookId, isLiked, authCtx]);

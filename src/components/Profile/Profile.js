@@ -32,8 +32,24 @@ const Profile = () => {
         );
     }
 
-    let booksList = books
+    const booksList = books
         .filter((book) => book.creatorId === userId)
+        .map((book) => {
+            return (
+                <BookItem
+                    id={book.id}
+                    key={book.id}
+                    title={book.title}
+                    author={book.author}
+                    description={book.description}
+                    imageUrl={book.imageUrl}
+                    url={`/profile/mybooks/${book.id}`}
+                />
+            );
+        });
+
+    const likedBooks = books
+        .filter((book) => book.likedBy.includes(userId))
         .map((book) => {
             return (
                 <BookItem
@@ -54,6 +70,7 @@ const Profile = () => {
                 <h2 className={styles.title}>Added books</h2>
                 <ul>{booksList}</ul>
                 <h2 className={styles.title}>Liked books</h2>
+                <ul>{likedBooks}</ul>
             </section>
         </Fragment>
     );
