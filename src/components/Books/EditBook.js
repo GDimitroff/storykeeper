@@ -115,6 +115,7 @@ const EditBook = () => {
             description: enteredDescription,
             imageUrl: enteredImageUrl,
             creatorId: book.creatorId,
+            likedBy: book.likedBy || [],
         };
 
         ctx.updateBook(book.id, updatedBook);
