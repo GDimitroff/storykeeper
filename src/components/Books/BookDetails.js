@@ -20,10 +20,14 @@ import styles from './BookDetails.module.css';
 const BookDetails = () => {
     const { bookId } = useParams();
     const [book, setBook] = useState({});
+
     const navigate = useNavigate();
+
     const ctx = useContext(BooksContext);
     const authCtx = useContext(AuthContext);
+
     const isCreator = book.creatorId === authCtx.userId;
+    const [isLiked, setIsLiked] = useState(null);
 
     let location = useLocation().pathname.split('/')[1];
     location = location === 'books' ? '/' : '/profile';
@@ -31,14 +35,32 @@ const BookDetails = () => {
     useEffect(() => {
         bookService.getBookById(bookId).then((book) => {
             setBook(book);
+
+            if (!book.likedBy) {
+                setIsLiked(false);
+            } else {
+                if (book.likedBy.includes(authCtx.userId)) {
+                    setIsLiked(true);
+                } else {
+                    setBook(false);
+                }
+            }
         });
-    }, [ctx, bookId]);
+    }, [ctx, bookId, isLiked, authCtx]);
 
     const onCloseHandler = () => {
         navigate(location);
     };
 
-    const onLikeHandler = () => {};
+    const toggleLikeHandler = () => {
+        if (isLiked) {
+            setIsLiked(false);
+            ctx.dislikeBook(bookId, authCtx.userId);
+        } else {
+            setIsLiked(true);
+            ctx.likeBook(bookId, authCtx.userId);
+        }
+    };
 
     const onEditHandler = () => {
         if (location === '/') {
@@ -81,8 +103,10 @@ const BookDetails = () => {
                     </button>
                     {authCtx.isLoggedIn && !isCreator && (
                         <button
-                            className={`${styles.btn} ${styles['btn-like']}`}
-                            onClick={onLikeHandler}>
+                            className={`${styles.btn} ${styles['btn-like']} ${
+                                isLiked ? styles['btn-liked'] : ''
+                            }`}
+                            onClick={toggleLikeHandler}>
                             <FontAwesomeIcon icon={faHeart} size="lg" />
                         </button>
                     )}

@@ -91,6 +91,7 @@ const AddNewBook = () => {
             description: enteredDescription,
             imageUrl: enteredImageUrl,
             creatorId: authCtx.userId,
+            likedBy: [],
         };
 
         ctx.addNewBook(book);

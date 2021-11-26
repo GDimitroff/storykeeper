@@ -9,6 +9,8 @@ const BooksContext = React.createContext({
     addNewBook: (book) => {},
     removeBook: (id) => {},
     updateBook: (id, book) => {},
+    likeBook: (bookId, userId) => {},
+    dislikeBook: (bookId, userId) => {},
 });
 
 export const BooksContextProvider = (props) => {
@@ -29,6 +31,7 @@ export const BooksContextProvider = (props) => {
                         description: data[key].description,
                         imageUrl: data[key].imageUrl,
                         creatorId: data[key].creatorId,
+                        likedBy: data[key].likedBy || [],
                     });
                 }
 
@@ -68,6 +71,37 @@ export const BooksContextProvider = (props) => {
         setBooks((prevState) => prevState.filter((book) => book.id !== id));
     };
 
+    const likeBook = async (bookId, userId) => {
+        const index = books.findIndex((item) => item.id === bookId);
+        const newBooks = [...books];
+        let updatedBook = newBooks[index];
+        let likedBy = updatedBook.likedBy.slice() || [];
+        updatedBook = { ...updatedBook, likedBy: [...likedBy, userId] };
+        setBooks(newBooks);
+
+        await bookService.updateBook(bookId, updatedBook);
+    };
+
+    const dislikeBook = async (bookId, userId) => {
+        const index = books.findIndex((item) => item.id === bookId);
+        const newBooks = [...books];
+        let updatedBook = newBooks[index];
+
+        const likedByIndex = updatedBook.likedBy.findIndex(
+            (id) => id === userId
+        );
+        let likedBy = [...updatedBook.likedBy];
+        likedBy = [
+            ...likedBy.slice(0, likedByIndex),
+            ...likedBy.slice(likedByIndex + 1),
+        ];
+
+        updatedBook = { ...updatedBook, likedBy: likedBy };
+        setBooks(newBooks);
+
+        await bookService.updateBook(bookId, updatedBook);
+    };
+
     return (
         <BooksContext.Provider
             value={{
@@ -77,6 +111,8 @@ export const BooksContextProvider = (props) => {
                 addNewBook,
                 removeBook,
                 updateBook,
+                likeBook,
+                dislikeBook,
             }}>
             {props.children}
         </BooksContext.Provider>
