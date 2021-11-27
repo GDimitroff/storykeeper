@@ -218,12 +218,22 @@ const EditBook = () => {
                     <button
                         disabled={!formIsValid}
                         className={`${styles.btn} ${styles['btn-add']}`}>
-                        <FontAwesomeIcon icon={faCheck} size="lg" />
+                        <FontAwesomeIcon
+                            icon={faCheck}
+                            size="sm"
+                            className={styles['icon']}
+                        />
+                        Save
                     </button>
                     <button
                         onClick={onCloseHandler}
                         className={`${styles.btn} ${styles['btn-close']}`}>
-                        <FontAwesomeIcon icon={faTimes} size="lg" />
+                        <FontAwesomeIcon
+                            icon={faTimes}
+                            size="1x"
+                            className={styles['icon']}
+                        />
+                        Cancel
                     </button>
                 </form>
 

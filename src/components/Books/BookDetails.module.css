@@ -39,26 +39,31 @@
 }
 
 .btn {
+    font-family: inherit;
+    font-size: 1.6rem;
     cursor: pointer;
-    width: 4.4rem;
+    width: 12rem;
     height: 4.4rem;
     border-radius: 3px;
     border: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    transition: all 300ms;
+    transition: all 400ms;
+    padding-left: 25px;
+}
+
+.icon {
+    margin-right: 10px;
 }
 
 .btn-close {
     position: absolute;
     border: 2px solid #f9f6f0;
     border-radius: 3px;
-    padding: 0.3rem;
     color: #f9f6f0;
     background-color: #888;
     top: -22px;
-    right: -22px;
+    right: -55px;
 }
 
 .btn-close:hover,
@@ -71,22 +76,20 @@
     position: absolute;
     border: 2px solid #f9f6f0;
     border-radius: 3px;
-    padding: 0.3rem;
     color: #f9f6f0;
     background-color: #888;
     bottom: 20px;
-    right: -22px;
+    right: -55px;
 }
 
 .btn-delete {
     position: absolute;
     border: 2px solid #f9f6f0;
     border-radius: 3px;
-    padding: 0.3rem;
     color: #f9f6f0;
     background-color: #888;
     bottom: -22px;
-    right: -22px;
+    right: -55px;
 }
 
 .btn-delete:hover {
@@ -97,11 +100,10 @@
     position: absolute;
     border: 2px solid #f9f6f0;
     border-radius: 3px;
-    padding: 0.3rem;
     color: #f9f6f0;
     background-color: #888;
     top: 20px;
-    right: -22px;
+    right: -55px;
 }
 
 .btn-liked,

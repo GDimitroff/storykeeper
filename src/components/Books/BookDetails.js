@@ -95,7 +95,12 @@ const BookDetails = () => {
                     <button
                         className={`${styles.btn} ${styles['btn-close']}`}
                         onClick={onCloseHandler}>
-                        <FontAwesomeIcon icon={faTimes} size="lg" />
+                        <FontAwesomeIcon
+                            icon={faTimes}
+                            size="lg"
+                            className={styles['icon']}
+                        />
+                        Close
                     </button>
                     {authCtx.isLoggedIn && !isCreator && (
                         <button
@@ -103,21 +108,36 @@ const BookDetails = () => {
                                 isLiked ? styles['btn-liked'] : ''
                             }`}
                             onClick={toggleLikeHandler}>
-                            <FontAwesomeIcon icon={faHeart} size="lg" />
+                            <FontAwesomeIcon
+                                icon={faHeart}
+                                size="sm"
+                                className={styles['icon']}
+                            />
+                            {isLiked ? 'Liked' : 'Like'}
                         </button>
                     )}
                     {isCreator && (
                         <button
                             className={`${styles.btn} ${styles['btn-settings']}`}
                             onClick={onEditHandler}>
-                            <FontAwesomeIcon icon={faCog} size="lg" />
+                            <FontAwesomeIcon
+                                icon={faCog}
+                                size="1x"
+                                className={styles['icon']}
+                            />
+                            Edit
                         </button>
                     )}
                     {isCreator && (
                         <button
                             className={`${styles.btn} ${styles['btn-delete']}`}
                             onClick={onDeleteHandler}>
-                            <FontAwesomeIcon icon={faTrash} size="lg" />
+                            <FontAwesomeIcon
+                                icon={faTrash}
+                                size="1x"
+                                className={styles['icon']}
+                            />
+                            Delete
                         </button>
                     )}
                 </div>
