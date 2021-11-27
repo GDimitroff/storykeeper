@@ -18,7 +18,7 @@
     border-radius: 3px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 30;
-    animation: slide-down 300ms ease-out forwards;
+    animation: slide-down 400ms ease-out forwards;
 }
 
 .auth {
@@ -31,7 +31,7 @@
     border-radius: 3px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 30;
-    animation: slide-down 300ms ease-out forwards;
+    animation: slide-down 400ms ease-out forwards;
 }
 
 @keyframes slide-down {

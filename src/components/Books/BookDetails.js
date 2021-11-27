@@ -29,6 +29,8 @@ const BookDetails = () => {
     const isCreator = book.creatorId === authCtx.userId;
     const [isLiked, setIsLiked] = useState(null);
 
+    const [confirmDelete, setConfirmDelete] = useState(false);
+
     let location = useLocation().pathname.split('/')[1];
     location = location === 'books' ? '/' : '/profile';
 
@@ -71,9 +73,13 @@ const BookDetails = () => {
     };
 
     const onDeleteHandler = () => {
-        bookService.deleteBook(bookId);
-        ctx.removeBook(bookId);
-        navigate(location);
+        if (!confirmDelete) {
+            setConfirmDelete(true);
+        } else {
+            bookService.deleteBook(bookId);
+            ctx.removeBook(bookId);
+            navigate(location);
+        }
     };
 
     return (
@@ -128,7 +134,7 @@ const BookDetails = () => {
                             Edit
                         </button>
                     )}
-                    {isCreator && (
+                    {!confirmDelete && isCreator && (
                         <button
                             className={`${styles.btn} ${styles['btn-delete']}`}
                             onClick={onDeleteHandler}>
@@ -138,6 +144,13 @@ const BookDetails = () => {
                                 className={styles['icon']}
                             />
                             Delete
+                        </button>
+                    )}
+                    {confirmDelete && isCreator && (
+                        <button
+                            className={`${styles.btn} ${styles['btn-confirm']}`}
+                            onClick={onDeleteHandler}>
+                            Click to confirm deleting this book
                         </button>
                     )}
                 </div>

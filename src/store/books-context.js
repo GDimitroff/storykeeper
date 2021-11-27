@@ -36,9 +36,7 @@ export const BooksContextProvider = (props) => {
                 }
 
                 setBooks(loadedBooks);
-                setTimeout(() => {
-                    setIsLoading(false);
-                }, 1000);
+                setIsLoading(false);
             })
             .catch((error) => {
                 setIsLoading(false);
