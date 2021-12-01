@@ -1,15 +1,14 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './TitaItem.module.css';
 
 const TitaItem = () => {
     return (
         <Fragment>
-            {/* <Link to={'/tita'} className={styles.book}> */}
-            <div className={styles['container']}>
-                <h1 className={styles['heading']}>На една поляна разстояние</h1>
+            <Link to={'/tita'} className={styles['container']}>
+                <h1 className={styles['heading']}>Късче топлинка</h1>
                 <span className={styles['heart']}>❤️</span>
-            </div>
-            {/* </Link> */}
+            </Link>
         </Fragment>
     );
 };

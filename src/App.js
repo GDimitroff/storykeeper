@@ -9,6 +9,7 @@ import Footer from './components/Layout/Footer';
 import EditBook from './components/Books/EditBook';
 import Authentication from './components/Authentication/Authentication';
 import Profile from './components/Profile/Profile';
+import Tita from './components/Tita/Tita';
 
 import { BooksContextProvider } from './store/books-context';
 import AuthContext from './store/auth-context';
@@ -123,7 +124,7 @@ function App() {
                     element={
                         <>
                             <Books />
-                            {/* <Tita /> */}
+                            <Tita />
                         </>
                     }
                 />

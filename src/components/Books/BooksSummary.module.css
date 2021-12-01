@@ -1,4 +1,5 @@
 .summary {
+    animation: summary-appear 1s ease-out forwards;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,4 +37,16 @@
 
 .summary .book:hover {
     color: rgb(88, 70, 33);
+}
+
+@keyframes summary-appear {
+    from {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

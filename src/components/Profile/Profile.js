@@ -67,10 +67,31 @@ const Profile = () => {
     return (
         <Fragment>
             <section className={styles.books}>
-                <h2 className={styles.title}>Added books</h2>
-                <ul>{booksList}</ul>
-                <h2 className={styles.title}>Liked books</h2>
-                <ul>{likedBooks}</ul>
+                <h2 className={styles.title}>
+                    Added books: {booksList.length}
+                </h2>
+                <ul>
+                    {booksList.length === 0 ? (
+                        <div className={styles['empty']}>
+                            You don't have any books added. Add some and they
+                            will appear here.
+                        </div>
+                    ) : (
+                        booksList
+                    )}
+                </ul>
+                <h2 className={styles.title}>
+                    Liked books: {likedBooks.length}
+                </h2>
+                <ul>
+                    {likedBooks.length === 0 ? (
+                        <div className={styles['empty']}>
+                            You didn't like any books.
+                        </div>
+                    ) : (
+                        likedBooks
+                    )}
+                </ul>
             </section>
         </Fragment>
     );
